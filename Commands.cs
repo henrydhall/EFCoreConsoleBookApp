@@ -66,7 +66,7 @@ namespace EFCoreConsoleBookApp
                 }
             };
             db.Books.AddRange(books);
-            db.SaveChanges(); //I need a function to see if the database exists, and if it does not create it.
+            db.SaveChanges(); 
         }
         public static void SearchDb()
         {
@@ -110,16 +110,14 @@ namespace EFCoreConsoleBookApp
             Console.Write("Search criteria: ");
             searchCriteria = Console.ReadLine();
             var db = new ConsoleBooksDbContext();
-            var myList = db.Books.Where(Book => Book.Title.Contains(searchCriteria)).ToList();
-            //previous lines returns garbage that can't be iterated on
-            foreach (var book in myList)
-                    //.Include(book => book.Author)) //fix the print statement, and get the query to return
-                    //a list that you can iterate over
-            {
-                //var webUrl = book.Author.WebUrl ?? "- no web url -";
-                Console.WriteLine($"{book.Title} by {book.Author.Name} - {book.PageNumbers} pages.");
-                Console.WriteLine("    Published on " + $"{book.PublishedOn:dd-MMM-yyyy}. ");
-            }
+            foreach(var book in db.Books.AsNoTracking()
+                    .Where( book => book.Title.Contains(searchCriteria))
+                    .Include(book => book.Author) )
+                {
+                    var webUrl = book.Author.WebUrl ?? "- no web url -";
+                    Console.WriteLine($"{book.Title} by {book.Author.Name} - {book.PageNumbers} pages.");
+                    Console.WriteLine("    Published on " + $"{book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+                }
         }
         public static void SearchAuthors()
         {

@@ -7,9 +7,11 @@ Currently running on:
 
 * EF Core 5.1
 
-# What can you do?
+## What can you do?
 Current features include:
 * Listing preseeded books.
+* Searching books by title.
 
-# TODO:
-* Searching books by 
+## TODO:
+* Searching books by everything else.
+* Searching by author.
