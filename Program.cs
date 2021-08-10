@@ -7,7 +7,7 @@ namespace EFCoreConsoleBookApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Commands: l (list), s (search), r (resetDb), and e (exit)");
+            Console.WriteLine("Commands: l (list), s (search), a (add), c (make change), r (resetDb), and e (exit)");
             Console.Write("Checking if database exists... ");
             Console.WriteLine(Commands.Initialize(true) ? "created database and seeded it." : "it exists.");
             Commands.Initialize(true);
@@ -24,6 +24,9 @@ namespace EFCoreConsoleBookApp
                         return;
                     case "s":
                         Commands.SearchDb();
+                        break;
+                    case "c":
+                        Commands.MakeChange();
                         break;
                     case "r":
                         Console.WriteLine("TODO: resetDatabase()");

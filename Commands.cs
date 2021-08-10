@@ -91,13 +91,16 @@ namespace EFCoreConsoleBookApp
         public static void SearchBooks()
         {
             string bookSearchCriteria;
-            Console.WriteLine("Search category: t (title), d (description), p (publishing date), a (author), n (number of pages).");
+            Console.WriteLine("Search category: t (title), p (publishing date), a (author), n (number of pages).");
             Console.Write(" >");
             bookSearchCriteria = Console.ReadLine();
             switch(bookSearchCriteria)
             {
                 case "t":
                     SearchBookTitle();
+                    break;
+                case "n":
+                    SearchBookPageNumber();
                     break;
                 default:
                     Console.WriteLine("Not a category");
@@ -118,6 +121,36 @@ namespace EFCoreConsoleBookApp
                     Console.WriteLine($"{book.Title} by {book.Author.Name} - {book.PageNumbers} pages.");
                     Console.WriteLine("    Published on " + $"{book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
                 }
+        }
+        public static void SearchBookPageNumber()
+        {
+            string searchCriteria;
+            int searchBase;
+            Console.WriteLine("Enter a number. The query will search for books within 50 pages of the number.");
+            Console.Write("Search criteria: ");
+            searchCriteria = Console.ReadLine();
+            try
+            {
+                searchBase = Convert.ToInt32(searchCriteria);
+            }
+            catch(System.FormatException)
+            {
+                Console.WriteLine("Invalid input");
+                return;
+            }
+            var db = new ConsoleBooksDbContext();
+            foreach(var book in db.Books.AsNoTracking()
+                .Where( book => book.PageNumbers > searchBase - 50 && book.PageNumbers < searchBase + 50 )
+                .Include(book => book.Author) )
+            {
+                var webUrl = book.Author.WebUrl ?? "- no web url -";
+                Console.WriteLine($"{book.Title} by {book.Author.Name} - {book.PageNumbers} pages.");
+                Console.WriteLine("    Published on " + $"{book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+            }
+        }
+        public static void MakeChange()
+        {
+            Console.WriteLine("TODO: make changes.");
         }
         public static void SearchAuthors()
         {

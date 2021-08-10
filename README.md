@@ -11,7 +11,12 @@ Currently running on:
 Current features include:
 * Listing preseeded books.
 * Searching books by title.
+* Searching books by number of pages within +-50
 
 ## TODO:
+* The next big thing is adding a book.
 * Searching books by everything else.
+* Searching by number of pages improvements: setting range, setting range above and below.
 * Searching by author.
+* Making changes to existing objects.
+* Take a look and make sure that the interface doesn't become too complicated.

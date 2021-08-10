@@ -60,4 +60,3 @@ C:\Users\Henry\Source\Repos\EFCoreConsoleBookApp\obj\Debug\net5.0\EFCoreConsoleB
 C:\Users\Henry\Source\Repos\EFCoreConsoleBookApp\obj\Debug\net5.0\ref\EFCoreConsoleBookApp.dll
 C:\Users\Henry\Source\Repos\EFCoreConsoleBookApp\obj\Debug\net5.0\EFCoreConsoleBookApp.pdb
 C:\Users\Henry\Source\Repos\EFCoreConsoleBookApp\obj\Debug\net5.0\EFCoreConsoleBookApp.genruntimeconfig.cache
-C:\Users\Henry\Source\Repos\EFCoreConsoleBookApp\obj\Debug\net5.0\EFCoreConsoleBookApp.csprojAssemblyReference.cache
