@@ -150,7 +150,62 @@ namespace EFCoreConsoleBookApp
         }
         public static void MakeChange()
         {
-            Console.WriteLine("TODO: make changes.");
+            Console.WriteLine("Type of change: e (existing book), a (add new book), d (delete book).");
+            Console.Write(" >");
+            string changeType;
+            changeType = Console.ReadLine();
+            switch( changeType )
+            {
+                case "e":
+                    EditBook();
+                    break;
+                case "a":
+                    AddBook();
+                    break;
+                case "d":
+                    DeleteBook();
+                    break;
+                default:
+                    Console.WriteLine("Invalid type of change.");
+                    break;
+            }
+        }
+        public static void EditBook()
+        {
+            Console.WriteLine("TODO: EditBook()");
+        }
+        public static void AddBook()
+        {
+            string bookTitle;
+            int publishedYear;
+            int publishedMonth;
+            int publishedDay;
+            DateTime bookPublished;
+            int bookPageNumbers;
+            string authorName;
+            string authorUrl;
+            Book newBook;
+            Author bookAuthor;
+            Console.Write("Book title: ");
+            bookTitle = Console.ReadLine();
+            Console.Write("Year published: ");
+            publishedYear = Convert.ToInt32( Console.ReadLine() );
+            Console.Write("Month published: ");
+            publishedMonth = Convert.ToInt32( Console.ReadLine() );
+            Console.Write("Day published: ");
+            publishedDay = Convert.ToInt32( Console.ReadLine() );
+            bookPublished = new DateTime( publishedYear, publishedMonth, publishedDay );
+            Console.Write("Number of pages: ");
+            bookPageNumbers = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Author name: ");
+            authorName = Console.ReadLine();
+            Console.Write("Author web url: ");
+            authorUrl = Console.ReadLine();
+            Console.WriteLine("TODO: actually make a book and add it to database");
+        }
+        public static void DeleteBook()
+        {
+            Console.WriteLine("TODO: DeleteBook()");
         }
         public static void SearchAuthors()
         {
