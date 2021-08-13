@@ -53,14 +53,14 @@ namespace EFCoreConsoleBookApp
                 new Book
                 {
                     Title = "Saxophones",
-                    PageNumbers = 420,
+                    PageNumbers = 320,
                     PublishedOn = new DateTime(1998, 7, 5),
                     Author = richardHall
                 },
                 new Book
                 {
                     Title = "Running with Style",
-                    PageNumbers = 69,
+                    PageNumbers = 70,
                     PublishedOn = new DateTime(2000,1,1),
                     Author = new Author{ Name = "Henry D. Hall", WebUrl = "henryxc.fastrunningblog.com"}
                 }
@@ -176,6 +176,7 @@ namespace EFCoreConsoleBookApp
         }
         public static void AddBook()
         {
+            //variables needed to add a book and author to the database
             string bookTitle;
             int publishedYear;
             int publishedMonth;
@@ -184,24 +185,38 @@ namespace EFCoreConsoleBookApp
             int bookPageNumbers;
             string authorName;
             string authorUrl;
-            Book newBook;
-            Author bookAuthor;
+            //database reference
+            var db = new ConsoleBooksDbContext();
+            //collecting input from user and assigning variables
             Console.Write("Book title: ");
             bookTitle = Console.ReadLine();
             Console.Write("Year published: ");
-            publishedYear = Convert.ToInt32( Console.ReadLine() );
+            publishedYear = Convert.ToInt32(Console.ReadLine());
             Console.Write("Month published: ");
-            publishedMonth = Convert.ToInt32( Console.ReadLine() );
+            publishedMonth = Convert.ToInt32(Console.ReadLine());
             Console.Write("Day published: ");
-            publishedDay = Convert.ToInt32( Console.ReadLine() );
-            bookPublished = new DateTime( publishedYear, publishedMonth, publishedDay );
+            publishedDay = Convert.ToInt32(Console.ReadLine());
+            bookPublished = new DateTime(publishedYear, publishedMonth, publishedDay);
             Console.Write("Number of pages: ");
             bookPageNumbers = Convert.ToInt32(Console.ReadLine());
             Console.Write("Author name: ");
             authorName = Console.ReadLine();
             Console.Write("Author web url: ");
             authorUrl = Console.ReadLine();
-            Console.WriteLine("TODO: actually make a book and add it to database");
+            //creating book
+            var books = new List<Book>
+            {
+                new Book
+                {
+                    Title = bookTitle,
+                    PageNumbers = bookPageNumbers,
+                    PublishedOn = bookPublished,
+                    Author = new Author{ Name = authorName, WebUrl = authorUrl }
+                }
+            };
+            //adding book to database
+            db.Books.AddRange(books);
+            db.SaveChanges();
         }
         public static void DeleteBook()
         {

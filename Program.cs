@@ -29,7 +29,7 @@ namespace EFCoreConsoleBookApp
                         Commands.MakeChange();
                         break;
                     case "r":
-                        Console.WriteLine("TODO: resetDatabase()");
+                        Console.WriteLine("TODO: resetDatabase()");   
                         break;
                     default:
                         Console.WriteLine("Unknown command.");

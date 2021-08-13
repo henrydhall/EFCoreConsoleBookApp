@@ -1,5 +1,27 @@
+Menus: Main, search, list, add, change.
+	Main: search, list, change, reset, quit.
+	Search: book, author
+		Book: title, published on, author, pagenumbers
+		Author: name, url
+	List: books, authors
+	Change: book, authors
+		book: title, published on, author, pagenumbers, delete.
+		author: name, url, delete?
+	Reset: y/n
+	Quit: y/n?
+
 Menus:
 Main:
-  Options:
- Search:
-  Options:
+  Options: l (list), s (search), a (add), c (make change), r (resetDb), and e (exit)"
+  s:
+	Options: a (author), b (book)
+		b: t (title), p (publishing date), a (author), n (number of pages)
+  c: e(existing book), a (add new book), d (delete book).
+
+a: Main, main/c
+b: Main/s
+c: Main
+d: Main/c
+e: Main, Main/c
+l: Main
+r: Main
