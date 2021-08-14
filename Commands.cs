@@ -135,7 +135,7 @@ namespace EFCoreConsoleBookApp
             }
             catch(System.FormatException)
             {
-                Console.WriteLine("Invalid input");
+                Console.WriteLine("Invalid input.");
                 return;
             }
             var db = new ConsoleBooksDbContext();
@@ -146,6 +146,22 @@ namespace EFCoreConsoleBookApp
                 var webUrl = book.Author.WebUrl ?? "- no web url -";
                 Console.WriteLine($"{book.Title} by {book.Author.Name} - {book.PageNumbers} pages.");
                 Console.WriteLine("    Published on " + $"{book.PublishedOn:dd-MMM-yyyy}. {webUrl}");
+            }
+        }
+        public static void ListAuthors()
+        {
+            HashSet<Author> Authors = new HashSet<Author>();
+            using (var db = new ConsoleBooksDbContext())
+            {
+                foreach (var book in db.Books.AsNoTracking()
+                    .Include(book => book.Author))
+                {
+                    Authors.Add(book.Author);
+                }
+            }
+            foreach (Author author in Authors)
+            {
+                Console.WriteLine($"{author.Name} - {author.WebUrl}");
             }
         }
         public static void MakeChange()

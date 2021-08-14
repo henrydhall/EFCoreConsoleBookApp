@@ -15,9 +15,8 @@ Current features include:
 * Add a book and author.
 
 ## TODO:
-* List authors. Make sure if an author already exists when added with a book it isn't recreated.
-* Reorganize menus. Put the right functions in the right scopes, clean up, make more dynamic.
 * Searching books by everything else.
 * Searching by number of pages improvements: setting range, setting range above and below.
 * Searching by author.
 * Making changes to existing objects.
+* List authors. Make sure if an author already exists when added with a book it isn't recreated. Need to work on this a lot since right now there's no Author table.'

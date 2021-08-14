@@ -18,7 +18,7 @@ namespace EFCoreConsoleBookApp
                 switch (command)
                 {
                     case "l":
-                        Commands.ListAll();
+                        listObjects();
                         break;
                     case "e":
                         return;
@@ -36,6 +36,28 @@ namespace EFCoreConsoleBookApp
                         break;
                 }
             } while (true);
+        }
+        public static void listObjects()
+        {
+            Commands.ListAll();
+            //Doesn't work because we need tables set up differently.
+            /*
+            string listOption;
+            Console.WriteLine("List options: b (books), a (authors)");
+            Console.Write(" >");
+            listOption = Console.ReadLine();
+            switch(listOption)
+            {
+                case "b":
+                    Commands.ListAll();
+                    break;
+                case "a":
+                    Commands.ListAuthors();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input.");
+                    break;
+            }*/
         }
     }
 }
